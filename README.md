@@ -2,7 +2,7 @@
 
 A simple and interactive Streamlit web app that helps you analyze your WhatsApp chats! Easily upload your `.txt` chat export and get insights like total messages, most active users, word frequency, emoji usage, and more.
 
-![Streamlit App Screenshot]([https://drive.google.com/file/d/1RVB6L3xgFaSwojcx98U6AgVFf5XJxo25/view?usp=sharing]) <!-- Replace with your own screenshot or remove -->
+![Streamlit App Screenshot](https://drive.google.com/file/d/1RVB6L3xgFaSwojcx98U6AgVFf5XJxo25/view?usp=sharing) <!-- Replace with your own screenshot or remove -->
  
 ---
 
