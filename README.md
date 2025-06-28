@@ -37,6 +37,6 @@ A simple and interactive Streamlit web app that helps you analyze your WhatsApp 
 ## Live Demo
 
 Check out the live version of the project:
-👉 [https://watcha-chatanalyzer-sagaratyt.onrender.com/](https://watcha-chatanalyzer-sagaratyt.onrender.com/))
+👉 [https://watcha-chatanalyzer-sagaratyt.onrender.com/](https://watcha-chatanalyzer-sagaratyt.onrender.com/)
 
 
