@@ -9,8 +9,15 @@ def preprocess(data):
     dates = re.findall(pattern, data)
     df = pd.DataFrame({'user_message': messages, 'message_date': dates})
     # converting message_date type, difft format
-    # df['message_date'] = pd.to_datetime(df['message_date'], format='%d/%m/%Y, %H:%M - ')
-    df['message_date'] = pd.to_datetime(df['message_date'].str.strip(), dayfirst=True, errors='coerce')
+    try:
+        df['message_date'] = pd.to_datetime(df['message_date'], format='%d/%m/%Y, %H:%M - ')
+    except ValueError:
+        try:
+            df['message_date'] = pd.to_datetime(df['message_date'], format='%m/%d/%Y, %H:%M - ')
+        except ValueError:
+            raise ValueError("Date format not supported. Check if format is consistent with '%d/%m/%Y, %H:%M - '")
+
+    # df['message_date'] = pd.to_datetime(df['message_date'].str.strip(), dayfirst=True, errors='coerce')
 
     df.rename(columns={'message_date': 'date'}, inplace=True)
 
