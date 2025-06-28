@@ -81,7 +81,7 @@ def emoji_analysis(selected_user,df):
 
     emojis_df = pd.DataFrame(Counter(emojis).most_common(len(Counter(emojis))))
 
-    return emojis_df
+    return emoji_df
 
 def monthly_timeline(selected_user,df):
     if selected_user != 'Group-Level/Mutual':
