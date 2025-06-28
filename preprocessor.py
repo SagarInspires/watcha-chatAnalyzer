@@ -4,11 +4,14 @@ import pandas as pd
 def preprocess(data):
     #thgis fncn will receive a data
     pattern = '\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s-\s'
+    pattern = '\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s-\s'
     messages = re.split(pattern, data)[1:]
     dates = re.findall(pattern, data)
     df = pd.DataFrame({'user_message': messages, 'message_date': dates})
     # converting message_date type, difft format
-    df['message_date'] = pd.to_datetime(df['message_date'], format='%d/%m/%Y, %H:%M - ')
+    # df['message_date'] = pd.to_datetime(df['message_date'], format='%d/%m/%Y, %H:%M - ')
+    df['message_date'] = pd.to_datetime(df['message_date'].str.strip(), dayfirst=True, errors='coerce')
+
     df.rename(columns={'message_date': 'date'}, inplace=True)
 
     users = []
@@ -17,7 +20,7 @@ def preprocess(data):
         entry = re.split('([\w\W]+?):\s', message)  # split means separate over given pattern
         if entry[1:]:  # user name
             users.append(entry[1])
-            messages.append(entry[2])
+            messages.append(" ".join(entry[2:]))
         else:  # when there is no col means mark it as group notification
             users.append('group_notification')
             messages.append(entry[0])
